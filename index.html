@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/master.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <title>Melde dich zum Stufentest an</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <div class="left">
+          <a href="http://stufentest-oberseelinth.ch">startseite</a>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="#">merkblatt</a></li>
+            <li><a href="files/stufentest-informationsbroschuere-2020.pdf" download>informationsbroschüre</a></li>
+            <li><a href="files/stufentest-tarife-2020.jpg" download>tarife</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="files/impressum.pdf">impressum</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex-container">
+        <form>
+          <h1>Melde dich zum Stufentest an</h1>
+
+          <div class="progress-bar">
+            <div class="line">
+              <div class="progress"></div>
+            </div>
+            <div class="step current">
+              <div class="circle">
+                <h3>1</h3>
+              </div>
+            </div>
+            <div class="step">
+              <div class="circle">
+                <h3>2</h3>
+              </div>
+            </div>
+            <div class="step">
+              <div class="circle">
+                <h3>3</h3>
+              </div>
+            </div>
+            <div class="step">
+              <div class="circle">
+                <h3>4</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-fields">
+            <div class="fix-direction">
+              <!-- reference for radio buttons -->
+              <input type="radio" id="ms" name="form_of_address" value="Frau" hidden checked>
+              <input type="radio" id="mr" name="form_of_address" value="Herr" hidden>
+
+              <input type="radio" id="1" name="level" value="1" hidden checked>
+              <input type="radio" id="2" name="level" value="2" hidden>
+              <input type="radio" id="3" name="level" value="3" hidden>
+              <input type="radio" id="4" name="level" value="4" hidden>
+              <input type="radio" id="5" name="level" value="5" hidden>
+              <input type="radio" id="6" name="level" value="6" hidden>
+
+              <div class="tab tab-1">
+                <div class="columns">
+                  <div class="column student">
+                    <div class="section">
+                      <h3>Personalien*</h3>
+                      <input type="text" name="student_first_name" placeholder="Name" autocomplete="off">
+                      <input type="text" name="student_last_name" placeholder="Nachname" autocomplete="off">
+                      <input type="text" name="birthdate" placeholder="Geburtsdatum (tt.mm.jjjj)" autocomplete="off">
+                    </div>
+                    <div class="section">
+                      <h3>Instrument*</h3>
+                      <div class="menu menu-instrument">
+                        <div class="enable-click">
+                          <input type="text" name="instrument" disabled>
+                        </div>
+                        <ul>
+                          <li>Akkordeon</li>
+                          <li>Alphorn</li>
+                          <li>Blockflöte</li>
+                          <li>Bratsche</li>
+                          <li>E-Bass</li>
+                          <li>E-Gitarre</li>
+                          <li>Euphonium</li>
+                          <li>Fagott</li>
+                          <li>Gesang Klassik</li>
+                          <li>Gesang Pop Rock Jazz</li>
+                          <li>Gitarre Klassik</li>
+                          <li>Hackbrett</li>
+                          <li>Harfe</li>
+                          <li>Horn</li>
+                          <li>Keyboard</li>
+                          <li>Klavier Klassik</li>
+                          <li>Klavier Pop Rock Jazz</li>
+                          <li>Kontrabass Klassik</li>
+                          <li>Kontrabass Pop Rock Jazz</li>
+                          <li>Mandoline</li>
+                          <li>Oboe</li>
+                          <li>Orgel</li>
+                          <li>Panflöte</li>
+                          <li>Posaune</li>
+                          <li>Querflöte</li>
+                          <li>Saxophon</li>
+                          <li>Schlagzeug Perkussion Mallets</li>
+                          <li>Schwyzerörgeli</li>
+                          <li>Tambouren</li>
+                          <li>Trompete</li>
+                          <li>Tuba</li>
+                          <li>Violine</li>
+                          <li>Violoncello</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="section">
+                      <h3>Stufe*</h3>
+                      <div class="radio-buttons">
+                        <label for="1">1</label>
+                        <label for="2">2</label>
+                        <label for="3">3</label>
+                        <label for="4">4</label>
+                        <label for="5">5</label>
+                        <label for="6">6</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="column school">
+                    <div class="section">
+                      <h3>Musikschule und -lehrer*</h3>
+                      <div class="menu menu-school">
+                        <div class="enable-click">
+                          <input type="text" name="school" disabled>
+                        </div>
+                        <ul>
+                          <li>Andere Musikschule</li>
+                          <li>Musikschule Amden</li>
+                          <li>Musikschule Benken</li>
+                          <li>Musikschule Eschenbach</li>
+                          <li>Musikschule Freienbach</li>
+                          <li>Musikschule Gommiswald</li>
+                          <li>Musikschule Kaltbrunn</li>
+                          <li>Musikschule Lachen-Altendorf</li>
+                          <li>Musikschule Rapperswil-Jona</li>
+                          <li>Musikschule Region Obermarch</li>
+                          <li>Musikschule Schänis</li>
+                          <li>Musikschule Feusisberg/Schindellegi</li>
+                          <li>Musikschule Uznach</li>
+                          <li>Musikschule Weesen</li>
+                          <li>Musikschule Wollerau</li>
+                        </ul>
+                      </div>
+                      <input type="text" name="teacher_first_name" placeholder="Name" autocomplete="off">
+                      <input type="text" name="teacher_last_name" placeholder="Nachname" autocomplete="off">
+                      <input type="text" name="teacher_email" placeholder="E-Mail" autocomplete="off">
+                      <input type="text" name="teacher_telephone_number" placeholder="Telefonnummer" autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab tab-2">
+                <div class="columns">
+                  <div class="column legal-guardian">
+                    <div class="section">
+                      <h3>Personalien*</h3>
+                      <div class="radio-buttons">
+                        <label for="ms">Frau</label>
+                        <label for="mr">Herr</label>
+                      </div>
+                      <input type="text" name="legal_guardian_first_name" placeholder="Name" autocomplete="off">
+                      <input type="text" name="legal_guardian_last_name" placeholder="Nachname" autocomplete="off">
+                      <input type="text" name="legal_guardian_email" placeholder="E-Mail" autocomplete="off">
+                      <input type="text" name="legal_guardian_repeat_email" placeholder="E-Mail bestätigen" autocomplete="off">
+                      <input type="text" name="legal_guardian_telephone_number" placeholder="Telefonnummer" autocomplete="off">
+                      <input type="text" name="address_line" placeholder="Strasse und Nummer" autocomplete="off">
+                      <input type="text" name="postcode" placeholder="Postleitzahl" autocomplete="off">
+                      <input type="text" name="region" placeholder="Ort" autocomplete="off">
+                    </div>
+                  </div>
+
+                  <div class="column comment">
+                    <div class="section">
+                      <h3>Bemerkung</h3>
+                      <textarea name="comment" maxlength="500"></textarea>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab tab-3">
+                <span id="error-message"></span>
+
+                <div class="description">
+                  <h2>Zusammenfassung Ihrer Eingabe</h2>
+                  <p>Bitte prüfen Sie Ihre hinterlegten Daten (Personalien, Instrument, Stufe, Musikschule und -lehrperson etc.) auf ihre Richtigkeit und korrigieren Sie allfälligen Fehler.</p>
+                  <span>Entstehende Kosten: <span id="pricing"></span></span>
+                </div>
+
+                <div class="columns">
+                  <div class="column student">
+                    <h2>Schüler/-in</h2>
+
+                    <div class="section">
+                      <h3>Personalien*</h3>
+                      <input type="text" name="student_first_name" placeholder="Name" autocomplete="off">
+                      <input type="text" name="student_last_name" placeholder="Nachname" autocomplete="off">
+                      <input type="text" name="birthdate" placeholder="Geburtsdatum (tt.mm.jjjj)" autocomplete="off">
+                    </div>
+                    <div class="section">
+                      <h3>Instrument*</h3>
+                      <div class="menu menu-instrument">
+                        <div class="enable-click">
+                          <input type="text" name="instrument" disabled>
+                        </div>
+                        <ul>
+                          <li>Akkordeon</li>
+                          <li>Alphorn</li>
+                          <li>Blockflöte</li>
+                          <li>Bratsche</li>
+                          <li>E-Bass</li>
+                          <li>E-Gitarre</li>
+                          <li>Euphonium</li>
+                          <li>Fagott</li>
+                          <li>Gesang Klassik</li>
+                          <li>Gesang Pop Rock Jazz</li>
+                          <li>Gitarre Klassik</li>
+                          <li>Hackbrett</li>
+                          <li>Harfe</li>
+                          <li>Horn</li>
+                          <li>Keyboard</li>
+                          <li>Klavier Klassik</li>
+                          <li>Klavier Pop Rock Jazz</li>
+                          <li>Kontrabass Klassik</li>
+                          <li>Kontrabass Pop Rock Jazz</li>
+                          <li>Mandoline</li>
+                          <li>Oboe</li>
+                          <li>Orgel</li>
+                          <li>Panflöte</li>
+                          <li>Posaune</li>
+                          <li>Querflöte</li>
+                          <li>Saxophon</li>
+                          <li>Schlagzeug Perkussion Mallets</li>
+                          <li>Schwyzerörgeli</li>
+                          <li>Tambouren</li>
+                          <li>Trompete</li>
+                          <li>Tuba</li>
+                          <li>Violine</li>
+                          <li>Violoncello</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="section">
+                      <h3>Stufe*</h3>
+                      <div class="radio-buttons">
+                        <label for="1">1</label>
+                        <label for="2">2</label>
+                        <label for="3">3</label>
+                        <label for="4">4</label>
+                        <label for="5">5</label>
+                        <label for="6">6</label>
+                      </div>
+                    </div>
+                    <div class="section">
+                      <h3>Musikschule und -lehrer*</h3>
+                      <div class="menu menu-school">
+                        <div class="enable-click">
+                          <input type="text" name="school" disabled>
+                        </div>
+                        <ul>
+                          <li>Andere Musikschule</li>
+                          <li>Musikschule Amden</li>
+                          <li>Musikschule Benken</li>
+                          <li>Musikschule Eschenbach</li>
+                          <li>Musikschule Freienbach</li>
+                          <li>Musikschule Gommiswald</li>
+                          <li>Musikschule Kaltbrunn</li>
+                          <li>Musikschule Lachen-Altendorf</li>
+                          <li>Musikschule Rapperswil-Jona</li>
+                          <li>Musikschule Region Obermarch</li>
+                          <li>Musikschule Schänis</li>
+                          <li>Musikschule Feusisberg/Schindellegi</li>
+                          <li>Musikschule Uznach</li>
+                          <li>Musikschule Weesen</li>
+                          <li>Musikschule Wollerau</li>
+                        </ul>
+                      </div>
+                      <input type="text" name="teacher_first_name" placeholder="Name" autocomplete="off">
+                      <input type="text" name="teacher_last_name" placeholder="Nachname" autocomplete="off">
+                      <input type="text" name="teacher_email" placeholder="E-Mail" autocomplete="off">
+                      <input type="text" name="teacher_telephone_number" placeholder="Telefonnummer" autocomplete="off">
+                    </div>
+                  </div>
+
+                  <div class="column legal-guardian">
+                    <h2>Erziehungsberechtigte/-r</h2>
+
+                    <div class="section">
+                      <h3>Personalien*</h3>
+                      <div class="radio-buttons">
+                        <label for="ms">Frau</label>
+                        <label for="mr">Herr</label>
+                      </div>
+                      <input type="text" name="legal_guardian_first_name" placeholder="Name" autocomplete="off">
+                      <input type="text" name="legal_guardian_last_name" placeholder="Nachname" autocomplete="off">
+                      <input type="text" name="legal_guardian_email" placeholder="E-Mail" autocomplete="off">
+                      <input type="text" name="legal_guardian_repeat_email" placeholder="E-Mail bestätigen" autocomplete="off">
+                      <input type="text" name="legal_guardian_telephone_number" placeholder="Telefonnummer" autocomplete="off">
+                      <input type="text" name="address_line" placeholder="Strasse und Nummer" autocomplete="off">
+                      <input type="text" name="postcode" placeholder="Postleitzahl" autocomplete="off">
+                      <input type="text" name="region" placeholder="Ort" autocomplete="off">
+                    </div>
+                    <div class="section">
+                      <h3>Bemerkung</h3>
+                      <textarea name="comment" maxlength="500"></textarea>
+                      <span class="remaining-characters">noch 500 Zeichen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab tab-4">
+                <div class="flex-helper">
+                  <div class="authentication">
+                    <h2>Herzlichen Dank</h2>
+                    <p><span class="highlight student"></span> hat sich erfolgreich für den Stufentest angemeldet.<br>Eine Bestätigungs-E-Mail wurde an <span class="highlight email"></span> gesendet. Falls Sie unsere Bestätigungs-E-Mail nicht in Ihrem Posteingang sehen, überprüfen Sie bitte Ihren Spam-Ordner. Die Musiklehrperson hat von uns ebenfalls eine Bestätigung erhalten.<br><br>Musikschulen Obersee-Linth</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="navigation">
+            <button type="button" id="previous">
+              <span>Zurück</span>
+            </button>
+            <button type="button" id="next">
+              <span>Nächster Schritt</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="illustration-outside">
+          <div class="music-illustration"></div>
+          <span>Bild von <a target="_blank" rel="noopener noreferrer" href="https://de.freepik.com/pch">PCH</a>, freepik.com</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/select.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/switch-tabs.js"></script>
+  </body>
+</html>

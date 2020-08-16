@@ -1,0 +1,804 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #E0E6EB;
+  opacity: 1; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+  background-color: #E0E6EB;
+  border-radius: 3px;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  background: #C34971;
+  border-radius: 3px;
+}
+
+input {
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  padding: 0 25px;
+  border: 1px solid #E0E6EB;
+  border-radius: 5px;
+  background-color: #fff; /* Firefox */
+  -webkit-appearance: none;
+}
+
+input:nth-child(n+3) { /* start at second */
+  margin-top: 25px;
+}
+
+textarea {
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 8px 25px;
+  border: 1px solid #E0E6EB;
+  border-radius: 5px;
+  background-color: #fff; /* Firefox */
+  -webkit-appearance: none;
+}
+
+input:focus, .menu:focus, textarea:focus, button:focus {
+  outline: none;
+}
+
+h1 {
+  font-size: 2.813rem; /* 45px */
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.563rem; /* 25px */
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 1.125rem; /* 18px */
+  font-weight: normal;
+}
+
+p {
+  font-size: 1.125rem; /* 18px */
+}
+
+.error {
+  border: 1px solid #FF0B00 !important;
+}
+
+.error-message {
+  background-color: #FF0B00;
+}
+
+.success-message {
+  background-color: #62BF04;
+}
+
+.menu {
+  position: relative;
+}
+
+.menu .enable-click {
+  cursor: pointer;
+}
+
+.menu .enable-click input {
+  position: relative;
+  z-index: -1;
+}
+
+.menu .enable-click input:disabled {
+  -webkit-text-fill-color: #000;
+  opacity: 1; /* required on iOS */
+}
+
+.menu .enable-click::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: calc(50% - 3px);
+  right: 25px;
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: center;
+  border: 2px solid;
+  border-color: transparent #C34971 #C34971 transparent;
+}
+
+.menu .close::before {
+  top: calc(50% + 3px);
+  border-color: #C34971 transparent transparent #C34971;
+}
+
+.menu ul {
+  font-size: 18px;
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  list-style: none;
+  background-color: #fff;
+  max-height: 120px;
+  overflow: auto;
+  border: 1px solid #E0E6EB;
+  border-radius: 3px;
+  display: none;
+}
+
+.menu ul li {
+  color: #000;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.menu ul li:hover {
+  color: #C34971;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  width: calc(100% - 10%);
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 45px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 50px 50px 0;
+}
+
+.header a {
+  color: #000;
+  font-size: 1.125rem; /* 18px */
+  text-decoration: none;
+}
+
+.header .right ul {
+  list-style: none;
+  font-size: 0; /* remove space between li */
+}
+
+.header .right ul li {
+  display: inline-block; /* one line */
+}
+
+.header .right ul li:not(:last-child) {
+  margin-right: 65px;
+}
+
+.flex-container {
+  display: flex;
+  overflow: auto; /* fill height */
+}
+
+form {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+form h1 {
+  margin-left: 50px; /* scrollbar */
+}
+
+form #note {
+  font-size: 1rem;
+  color: #fff;
+  margin: 25px 0 0 50px;
+  padding: 12px;
+  display: block;
+  border-radius: 6px;
+}
+
+form #note:empty {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+/* process bar */
+form .progress-bar {
+  position: relative;
+  height: 105px;
+  margin: 25px 0 0 50px; /* scrollbar */
+  display: flex;
+  justify-content: space-between;
+}
+
+form .progress-bar .line {
+  position: absolute;
+  top: calc(8px + 25px);
+  left: 49px; /* overlap */
+  transform: translateY(-50%);
+  width: calc(100% - 100px + 2px); /* overlap */
+  height: 10px;
+  background-color: #E0E6EB;
+  z-index: -1;
+}
+
+form .progress-bar .line .progress {
+  width: 0;
+  height: 100%;
+  background-color: #62BF04;
+  transition: .5s;
+}
+
+form .progress-bar .step {
+  position: relative;
+  padding-top: 8px;
+}
+
+/* label */
+form .progress-bar .step:nth-child(n+1)::before {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  font-size: 18px;
+  color: #E0E6EB;
+  white-space: nowrap;
+}
+
+form .progress-bar .step:nth-child(2)::before {
+  content: 'Schüler/-in';
+}
+
+form .progress-bar .step:nth-child(3)::before {
+  content: 'Erziehungsberechtigte/-r';
+}
+
+form .progress-bar .step:nth-child(4)::before {
+  content: 'Überblick';
+}
+
+form .progress-bar .step:nth-child(5)::before {
+  content: 'E-Mail bestätigen';
+}
+
+form .progress-bar .step .circle {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 1px solid #E0E6EB;
+  background-color: #fff;
+}
+
+form .progress-bar .step .circle h3 {
+  color: #E0E6EB;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* current */
+/* second circle  */
+form .progress-bar .current .circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid #C34971;
+  background-color: #fff;
+  z-index: -1;
+}
+
+/* default circle */
+form .progress-bar .current .circle {
+  border: none !important;
+  background-color: #C34971;
+}
+
+form .progress-bar .current .circle h3 {
+  color: #fff;
+}
+
+/* label */
+form .progress-bar .current::before {
+  color: #C34971 !important;
+}
+
+/* completed */
+/* default circle */
+form .progress-bar .completed .circle {
+  border: none !important;
+  background-color: #62BF04;
+}
+
+form .progress-bar .completed .circle h3 {
+  color: #fff;
+}
+
+/* label */
+form .progress-bar .completed::before {
+  color: #62BF04 !important;
+}
+
+form .input-fields {
+  min-height: 250px;
+  margin-top: 65px;
+  overflow: auto;
+  direction: rtl;
+  flex: 1; /* stretch */
+}
+
+form .input-fields .fix-direction {
+  direction: ltr;
+  position: relative;
+  height: 100%;
+}
+
+form .input-fields .tab h3 {
+  color: #C34971;
+  margin-bottom: 15px;
+}
+
+form .input-fields .tab .columns .section:not(:first-of-type) h3 { /* tab-3 */
+  margin-top: 53px;
+}
+
+form .input-fields .tab .columns {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 45px;
+}
+
+form .input-fields .tab .columns .column:nth-child(n+1) {
+  width: calc(50% - 2.5%); /* space between */
+}
+
+form .input-fields .tab .columns .radio-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+form .input-fields .tab label {
+  height: 40px;
+  color: #E0E6EB;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid #E0E6EB;
+  border-radius: 5px;
+}
+
+form .input-fields .tab label:hover {
+  cursor: pointer;
+}
+
+[id="1"]:checked ~ .tab label[for="1"],
+[id="2"]:checked ~ .tab label[for="2"],
+[id="3"]:checked ~ .tab label[for="3"],
+[id="4"]:checked ~ .tab label[for="4"],
+[id="5"]:checked ~ .tab label[for="5"],
+[id="6"]:checked ~ .tab label[for="6"],
+#ms:checked ~ .tab label[for="ms"],
+#mr:checked ~ .tab label[for="mr"] {
+  color: #fff;
+  background-color: #C34971;
+  border: none;
+}
+
+form .input-fields .tab .columns .student .radio-buttons label {
+  width: calc((100% - (5 * 5%)) / 6);
+}
+
+form .input-fields .tab .columns .legal-guardian .radio-buttons label, form .input-fields .tab .columns .legal-guardian input:nth-last-child(-n+2) {
+  width: calc(50% - (25px / 2));
+}
+
+form .input-fields .tab .columns .legal-guardian input:last-child {
+  float: right;
+}
+
+form .input-fields .tab .columns .comment .section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form .input-fields .tab .section span {
+  font-size: 16px;
+  color: #C34971;
+  margin-top: 10px;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description {
+  margin-left: 45px;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description h2 {
+  color: #C34971;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description p {
+  margin: 10px 0;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description p a {
+  color: #C34971;
+  text-decoration: none;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description span {
+  font-size: 1.125rem
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description span #pricing {
+  color: #C34971;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .columns .column h2 {
+  margin: 50px 0 15px;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .columns .column:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .columns .legal-guardian .section:last-child {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+form .input-fields .tab-3 #error-message {
+  font-size: 1rem;
+  color: #FF0B00;
+  margin: 0 0 25px 45px;
+  display: block;
+}
+
+form .input-fields .tab-3 #error-message:empty {
+  margin: 0;
+}
+
+form .input-fields .tab-4 {
+  height: 100%;
+}
+
+form .input-fields .tab-4 .flex-helper {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form .input-fields .tab-4 .authentication {
+  width: 500px;
+}
+
+form .input-fields .tab-4 .authentication h2, form .input-fields .tab-4 .authentication p {
+  text-align: center;
+}
+
+form .input-fields .tab-4 .authentication p {
+  color: #6C6F73;
+  margin-top: 25px;
+}
+
+form .input-fields .tab-4 .authentication p .highlight {
+  color: #C34971;
+}
+
+form .input-fields .tab-4 .authentication p .student {
+  text-transform: capitalize;
+}
+
+form .input-fields .tab-4 .authentication p .email {
+  text-transform: lowercase;
+}
+
+form .input-fields .tab-4 .authentication .send-again {
+  color: #000;
+  font-size: 1.125rem;
+  text-align: center;
+  display: block;
+  margin-top: 50px;
+}
+
+form .input-fields .tab-4 .authentication span a {
+  color: #8464CF;
+  text-decoration: none;
+}
+
+form .input-fields .tab:nth-of-type(n+2) {
+  display: none;
+}
+
+form .navigation {
+  padding: 50px 0 50px 50px;
+}
+
+form .navigation button {
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 225px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form .navigation #previous {
+  color: #8464CF;
+  background-color: transparent;
+  border: 1px solid #8464CF;
+  float: left;
+  display: none;
+}
+
+form .navigation #next, form .navigation #save {
+  color: #fff;
+  background-color: #C34971;
+  border: none;
+  float: right;
+}
+
+.illustration-outside {
+  flex: 1; /* stretch */
+  padding: 0 0 50px 25px;
+}
+
+.illustration-outside .music-illustration {
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/music-illustration.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100%;
+}
+
+.illustration-outside span {
+  color: #C34971;
+  float: right;
+}
+
+.illustration-outside span a {
+  color: #8464CF;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1350px) {
+  form {
+    width: calc(100% - 50px);
+  }
+
+  .illustration-outside {
+    display: none;
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .header {
+    padding-top: 35px;
+  }
+}
+
+/* iPad */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px)  {
+  html, body {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .content {
+    height: auto;
+  }
+
+  form .input-fields .fix-direction {
+    overflow: hidden; /* Firefox */
+  }
+}
+
+@media screen and (max-height: 800px) {
+  html, body {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .content {
+    height: auto;
+  }
+
+  form .input-fields .fix-direction {
+    overflow: hidden; /* Firefox */
+  }
+
+  form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description {
+    margin-left: 50px;
+  }
+
+  form .input-fields .tab .columns {
+    padding-left: 50px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html, body {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .content {
+    height: auto;
+  }
+
+  form .input-fields .fix-direction {
+    overflow: hidden; /* Firefox */
+  }
+
+  .header {
+    padding: 50px 0 0;
+  }
+
+  .header .right ul li {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+
+  .header .right ul li:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .flex-container {
+    overflow: initial; /* default */
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form h1 {
+    margin-left: 0;
+  }
+
+  form #note {
+    margin-left: 0;
+  }
+
+  form .progress-bar {
+    margin: 25px 0 0 0;
+  }
+
+  form .input-fields .tab .columns {
+    padding-left: 0;
+  }
+
+  form .input-fields .tab:not(.tab-1):not(.tab-2):not(.tab-4) .description {
+    margin-left: 0;
+  }
+
+  form .navigation {
+    padding: 50px 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  form .progress-bar {
+    height: 283px;
+  }
+
+  form .progress-bar .step:nth-child(n+1)::before {
+    width: 200px;
+    text-align: right;
+    transform: rotate(-90deg) translate(-100%, -50%);
+    transform-origin: 0 0; /* left top */
+    top: calc(8px + 50px + 25px); /* padding + circle + margin */
+    bottom: initial;
+  }
+
+  form .input-fields .tab .columns {
+    display: block;
+  }
+
+  form .input-fields .tab .columns .column:nth-child(n+1) {
+    width: 100%;
+  }
+
+  form .input-fields .tab .columns .column:not(.student):not(.legal-guardian) .section h3 {
+    margin-top: 53px;
+  }
+
+  form .navigation {
+    padding: 50px 0 50px 0;
+  }
+
+  form .navigation button {
+    width: calc(50% - (50px / 2));
+  }
+
+  textarea {
+    height: 250px;
+  }
+
+  form .input-fields .tab-3 .columns .legal-guardian {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  form .progress-bar {
+    height: auto;
+    display: block;
+  }
+
+  form .progress-bar .line {
+    top: calc(49px + 8px);
+    left: 25px;
+    transform: rotate(90deg) translateY(-50%);
+    transform-origin: 0 0;
+    width: calc((2 * (50px + 16px)) + 150px + 16px + 2px); /* circle + padding + space (between) + padding (top and bottom) + overlap */
+  }
+
+  form .progress-bar .step {
+    padding: 8px 0;
+  }
+
+  form .progress-bar .step:nth-child(n+3) {
+    margin-top: 50px;
+  }
+
+  form .progress-bar .step:nth-child(n+1)::before {
+    width: auto;
+    text-align: left;
+    top: 50%;
+    transform: rotate(0) translateY(-50%);
+    left: calc(50px + 25px); /* circle + margin */
+  }
+
+  form .progress-bar .step .circle {
+    margin: 0;
+  }
+
+  form .input-fields .tab-4 .authentication {
+    width: 100%;
+  }
+
+  form .navigation button {
+    width: 100%;
+  }
+
+  form .navigation #previous {
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  form .input-fields .tab .columns .legal-guardian input:nth-last-child(-n+2) {
+    width: 100%;
+  }
+}
